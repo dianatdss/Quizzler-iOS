@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   
+        FirebaseApp.configure()
         
-        // Override point for customization after application launch.
+        let myDatabase = Database.database().reference()
+        
+        myDatabase.setValue("We've got data!")
+        let db = Firestore.firestore()
+        db.collection("matches").document("ABCD").getDocument() {
+            (document, err) in
+            if let document = document, document.exists {
+                let dataDesc = document.data().map(String.init(describing:)) ?? "nil"
+                print("Doc data: \(dataDesc)")
+            } else {
+                print("No doc")
+            }
+        }
         return true
     }
 
