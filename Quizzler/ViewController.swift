@@ -3,7 +3,6 @@
 //  Quizzler
 //
 //  Created by Diana on 30/03/2020.
-//  Copyright (c) 2015 London App Brewery. All rights reserved.
 //
 
 import UIKit

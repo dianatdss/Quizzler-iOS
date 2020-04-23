@@ -1,25 +1,21 @@
-//
-//  Question.swift
-//  Quizzler
-//
-//  Created by Diana on 29/03/2020.
-//  Copyright © 2020 London App Brewery. All rights reserved.
-//
-
 import Foundation
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
 
-class Question: Mappable {
+class Question: Mappable, Codable {
     
     var question : String?
     var correct_answer : String?
+    var question_state: Int?
     
     var answer: Bool {
         return (self.correct_answer == "True") ? true : false
     }
-    
+    init(question: String?, correct_answer: String?) {
+        self.question = question
+        self.correct_answer = correct_answer
+    }
     required init?(map: Map) {
         
     }
