@@ -3,7 +3,6 @@
 //  Quizzler
 //
 //  Created by Diana on 11/04/2020.
-//  Copyright © 2020 London App Brewery. All rights reserved.
 //
 
 import UIKit
@@ -26,7 +25,7 @@ class LoginController: UIViewController {
     @IBAction func login(_ sender: Any) {
         
         Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (result, error) in
-            if error != nil {
+            if error == nil {
                 print("Success")
                 self.performSegue(withIdentifier: "navigateFromLogin", sender: self)
             } else {
