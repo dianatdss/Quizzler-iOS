@@ -42,6 +42,7 @@ class StartMenuViewController: UIViewController {
             pickedAnswer = false
         }
         checkAnswer()
+      
     }
     
     func updateUI() {
@@ -128,7 +129,7 @@ class StartMenuViewController: UIViewController {
     
     func checkAnswer() {
         let answer = allQuestions[index].correct_answer == "True" ? true : false
-        index = 3
+        index += 1
 
         if answer == pickedAnswer {
             score += 1

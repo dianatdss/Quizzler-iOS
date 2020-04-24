@@ -35,7 +35,12 @@ class SelectCategoryController: UIViewController {
     @IBOutlet weak var joinBTN: UIButton!
  
  
-   
+    @IBOutlet weak var GKButton: UIButton!
+    @IBOutlet weak var animalsButton: UIButton!
+    @IBOutlet weak var musicButton: UIButton!
+    @IBOutlet weak var geographyButton: UIButton!
+    @IBOutlet weak var moviesButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +70,7 @@ class SelectCategoryController: UIViewController {
         selectCategoryLabel.isHidden = false
         roomCodeInput.isHidden = true
         joinBTN.isHidden = true
+        changeBtnsState(state: false)
     }
     
     @IBAction func onJoinBTNClick(_ sender: Any) {
@@ -89,10 +95,7 @@ class SelectCategoryController: UIViewController {
         sentCategory = 12
         loadNewQuestions()
     }
-    @IBAction func onArtClick(_ sender: Any) {
-        sentCategory = 25
-        loadNewQuestions()
-    }
+    
     @IBAction func onMoviesClick(_ sender: Any) {
         sentCategory = 11
         loadNewQuestions()
@@ -110,8 +113,14 @@ class SelectCategoryController: UIViewController {
 
     @IBAction func onCreateRoomClick(_ sender: Any) {
         isCreateRoomSelected = !isCreateRoomSelected
-        createRoomButton.backgroundColor = UIColor.black
-        createRoomButton.setTitleColor(UIColor.white, for: .normal)
+      
+        if isCreateRoomSelected == true {
+            createRoomButton.backgroundColor = UIColor.black
+            createRoomButton.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            createRoomButton.backgroundColor = UIColor.white
+            createRoomButton.setTitleColor(defaultColor, for: .normal)
+        }
         
         joinRoomButton.backgroundColor = UIColor.white
         joinRoomButton.setTitleColor(defaultColor, for: .normal)
@@ -120,6 +129,10 @@ class SelectCategoryController: UIViewController {
         selectCategoryLabel.isHidden = false
         roomCodeInput.isHidden = true
         joinBTN.isHidden = true
+        
+        if musicButton.isHidden == true {
+            changeBtnsState(state: false)
+        }
     }
 
     
@@ -129,13 +142,29 @@ class SelectCategoryController: UIViewController {
         createRoomButton.backgroundColor = UIColor.white
         createRoomButton.setTitleColor(defaultColor, for: .normal)
         
-        joinRoomButton.backgroundColor = UIColor.black
-        joinRoomButton.setTitleColor(UIColor.white, for: .normal)
-       
+        if isJoinARoomSelected == true {
+            joinRoomButton.backgroundColor = UIColor.black
+            joinRoomButton.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            joinRoomButton.backgroundColor = UIColor.white
+            joinRoomButton.setTitleColor(defaultColor, for: .normal)
+        }
      //   roomCodeInput.isHidden = !roomCodeInput.isHidden
         selectCategoryLabel.isHidden = !selectCategoryLabel.isHidden
         roomCodeInput.isHidden = !roomCodeInput.isHidden
         joinBTN.isHidden = !joinBTN.isHidden
+        
+        let state = !musicButton.isHidden
+        
+        changeBtnsState(state: state)
+    }
+    
+    func changeBtnsState(state: Bool) {
+        GKButton.isHidden = state
+        geographyButton.isHidden = state
+        musicButton.isHidden = state
+        moviesButton.isHidden = state
+        animalsButton.isHidden = state
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
