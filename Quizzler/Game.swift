@@ -8,6 +8,17 @@ class Game : Codable {
     var game_state: Int?
 }
 
+class Leaderboard {
+    var player: String?
+    var score: Int?
+    
+    
+    init(player: String?, score: Int?) {
+        self.player = player
+        self.score = score
+    }
+}
+
 class Player {
 
     var email: String?

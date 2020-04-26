@@ -21,6 +21,7 @@ class StartMenuViewController: UIViewController {
     var ref: DocumentReference? = nil
     var winner: String = ""
     var listener: ListenerRegistration?
+    var leaderBoard: [Leaderboard] = []
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var progressBar: UIView!
@@ -42,6 +43,7 @@ class StartMenuViewController: UIViewController {
             pickedAnswer = false
         }
         checkAnswer()
+      
     }
     
     func updateUI() {
@@ -49,12 +51,22 @@ class StartMenuViewController: UIViewController {
         scoreLabel.text = "Score: \(score)"
         progressLabel.text = "\(index+1) / \(allQuestions.count)"
         progressBar.frame.size.width = (view.frame.size.width / CGFloat(allQuestions.count) * CGFloat(index+1))
-        
-        print("\(questionLabel.text)")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "multiplayerEnded" {
+            
+            let docData1 : [String: Any] = [
+                "player": leaderBoard[0].player!,
+                "score": leaderBoard[0].score!
+            ]
+            let docData2 : [String: Any] = [
+                "player": leaderBoard[1].player!,
+                "score": leaderBoard[1].score!
+                ]
+            
+            db!.collection("leaderboard").addDocument(data: docData1)
+            db!.collection("leaderboard").addDocument(data: docData2)
             let destinationVC = segue.destination as! EndedMultiplayerViewController
             destinationVC.winner = self.winner
         }
@@ -93,6 +105,8 @@ class StartMenuViewController: UIViewController {
                             }
                     }
                     
+                    
+                    
                     listener = ref?.addSnapshotListener {
                         documentSnapshot, error in
                         guard let document = documentSnapshot else {
@@ -114,6 +128,11 @@ class StartMenuViewController: UIViewController {
                             } else {
                                 self.winner = "IT'S A DRAW"
                             }
+                        
+                            self.leaderBoard.append(Leaderboard(player: data["creator"] as? String, score: data["creator_score"] as? Int))
+                            
+                            self.leaderBoard.append(Leaderboard(player: data["joiner"] as? String, score: data["joiner_score"] as? Int))
+                            
                             self.listener?.remove()
                             alert.dismiss(animated: true, completion:{
                                 self.navigate()
@@ -128,7 +147,7 @@ class StartMenuViewController: UIViewController {
     
     func checkAnswer() {
         let answer = allQuestions[index].correct_answer == "True" ? true : false
-        index = 3
+        index += 1
 
         if answer == pickedAnswer {
             score += 1

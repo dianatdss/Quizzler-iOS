@@ -23,9 +23,10 @@ class SelectCategoryController: UIViewController {
     var game_state: Int?
     let group = DispatchGroup()
     let groupJoin = DispatchGroup()
+    let groupLeaderboard = DispatchGroup()
     let questionsGroup = DispatchGroup()
     var isCreator: Bool = false
-  
+    var leaderBoard: [Leaderboard] = []
     let defaultColor = UIColor(red: 1, green: 0.52, blue: 1, alpha: 1)
     
     @IBOutlet weak var joinRoomButton: UIButton!
@@ -35,7 +36,12 @@ class SelectCategoryController: UIViewController {
     @IBOutlet weak var joinBTN: UIButton!
  
  
-   
+    @IBOutlet weak var GKButton: UIButton!
+    @IBOutlet weak var animalsButton: UIButton!
+    @IBOutlet weak var musicButton: UIButton!
+    @IBOutlet weak var geographyButton: UIButton!
+    @IBOutlet weak var moviesButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +71,7 @@ class SelectCategoryController: UIViewController {
         selectCategoryLabel.isHidden = false
         roomCodeInput.isHidden = true
         joinBTN.isHidden = true
+        changeBtnsState(state: false)
     }
     
     @IBAction func onJoinBTNClick(_ sender: Any) {
@@ -89,10 +96,7 @@ class SelectCategoryController: UIViewController {
         sentCategory = 12
         loadNewQuestions()
     }
-    @IBAction func onArtClick(_ sender: Any) {
-        sentCategory = 25
-        loadNewQuestions()
-    }
+    
     @IBAction func onMoviesClick(_ sender: Any) {
         sentCategory = 11
         loadNewQuestions()
@@ -110,8 +114,14 @@ class SelectCategoryController: UIViewController {
 
     @IBAction func onCreateRoomClick(_ sender: Any) {
         isCreateRoomSelected = !isCreateRoomSelected
-        createRoomButton.backgroundColor = UIColor.black
-        createRoomButton.setTitleColor(UIColor.white, for: .normal)
+      
+        if isCreateRoomSelected == true {
+            createRoomButton.backgroundColor = UIColor.black
+            createRoomButton.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            createRoomButton.backgroundColor = UIColor.white
+            createRoomButton.setTitleColor(defaultColor, for: .normal)
+        }
         
         joinRoomButton.backgroundColor = UIColor.white
         joinRoomButton.setTitleColor(defaultColor, for: .normal)
@@ -120,6 +130,10 @@ class SelectCategoryController: UIViewController {
         selectCategoryLabel.isHidden = false
         roomCodeInput.isHidden = true
         joinBTN.isHidden = true
+        
+        if musicButton.isHidden == true {
+            changeBtnsState(state: false)
+        }
     }
 
     
@@ -129,13 +143,29 @@ class SelectCategoryController: UIViewController {
         createRoomButton.backgroundColor = UIColor.white
         createRoomButton.setTitleColor(defaultColor, for: .normal)
         
-        joinRoomButton.backgroundColor = UIColor.black
-        joinRoomButton.setTitleColor(UIColor.white, for: .normal)
-       
+        if isJoinARoomSelected == true {
+            joinRoomButton.backgroundColor = UIColor.black
+            joinRoomButton.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            joinRoomButton.backgroundColor = UIColor.white
+            joinRoomButton.setTitleColor(defaultColor, for: .normal)
+        }
      //   roomCodeInput.isHidden = !roomCodeInput.isHidden
         selectCategoryLabel.isHidden = !selectCategoryLabel.isHidden
         roomCodeInput.isHidden = !roomCodeInput.isHidden
         joinBTN.isHidden = !joinBTN.isHidden
+        
+        let state = !musicButton.isHidden
+        
+        changeBtnsState(state: state)
+    }
+    
+    func changeBtnsState(state: Bool) {
+        GKButton.isHidden = state
+        geographyButton.isHidden = state
+        musicButton.isHidden = state
+        moviesButton.isHidden = state
+        animalsButton.isHidden = state
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -150,6 +180,32 @@ class SelectCategoryController: UIViewController {
             destinationVC.roomCodeValue = self.id
             destinationVC.isCreator = self.isCreator
             destinationVC.allQuestions = allQuestions
+        }
+        
+        if segue.identifier == "navigateToLeaderboard" {
+            let destinationVC = segue.destination as! LeaderboardViewController
+            destinationVC.leaderBoard = self.leaderBoard
+        }
+    }
+    @IBAction func onSeeLeaderboardClick(_ sender: Any) {
+        self.db = Firestore.firestore()
+        groupLeaderboard.enter()
+        db?.collection("leaderboard").getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                for document in querySnapshot!.documents {
+                    let data = Leaderboard(player: document.data()["player"] as? String, score: document.data()["score"] as? Int)
+                    self.leaderBoard.append(data)
+                }
+                self.groupLeaderboard.leave()
+            }
+        }
+        groupLeaderboard.notify(queue: .main) {
+        
+            self.performSegue(withIdentifier: "navigateToLeaderboard", sender: self)
+            
         }
     }
     
