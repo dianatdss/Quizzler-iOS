@@ -23,9 +23,10 @@ class SelectCategoryController: UIViewController {
     var game_state: Int?
     let group = DispatchGroup()
     let groupJoin = DispatchGroup()
+    let groupLeaderboard = DispatchGroup()
     let questionsGroup = DispatchGroup()
     var isCreator: Bool = false
-  
+    var leaderBoard: [Leaderboard] = []
     let defaultColor = UIColor(red: 1, green: 0.52, blue: 1, alpha: 1)
     
     @IBOutlet weak var joinRoomButton: UIButton!
@@ -179,6 +180,32 @@ class SelectCategoryController: UIViewController {
             destinationVC.roomCodeValue = self.id
             destinationVC.isCreator = self.isCreator
             destinationVC.allQuestions = allQuestions
+        }
+        
+        if segue.identifier == "navigateToLeaderboard" {
+            let destinationVC = segue.destination as! LeaderboardViewController
+            destinationVC.leaderBoard = self.leaderBoard
+        }
+    }
+    @IBAction func onSeeLeaderboardClick(_ sender: Any) {
+        self.db = Firestore.firestore()
+        groupLeaderboard.enter()
+        db?.collection("leaderboard").getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                for document in querySnapshot!.documents {
+                    let data = Leaderboard(player: document.data()["player"] as? String, score: document.data()["score"] as? Int)
+                    self.leaderBoard.append(data)
+                }
+                self.groupLeaderboard.leave()
+            }
+        }
+        groupLeaderboard.notify(queue: .main) {
+        
+            self.performSegue(withIdentifier: "navigateToLeaderboard", sender: self)
+            
         }
     }
     

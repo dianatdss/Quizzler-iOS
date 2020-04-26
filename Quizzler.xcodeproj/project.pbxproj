@@ -11,6 +11,9 @@
 		633646C11B8C657400FF45E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633646C01B8C657400FF45E2 /* ViewController.swift */; };
 		633646C61B8C657400FF45E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633646C51B8C657400FF45E2 /* Images.xcassets */; };
 		633646C91B8C657400FF45E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633646C71B8C657400FF45E2 /* LaunchScreen.xib */; };
+		845C9F522454BA2700F39474 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C9F512454BA2700F39474 /* LeaderboardViewController.swift */; };
+		845C9F5524558EB800F39474 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C9F5324558EB800F39474 /* LeaderboardTableViewCell.swift */; };
+		845C9F5624558EB800F39474 /* LeaderboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845C9F5424558EB800F39474 /* LeaderboardTableViewCell.xib */; };
 		8461DBD22438B656001B9BB2 /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461DBD12438B656001B9BB2 /* StartMenuViewController.swift */; };
 		8461DBDB2441EFD1001B9BB2 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461DBDA2441EFD1001B9BB2 /* RegisterController.swift */; };
 		8461DBE32441F1CA001B9BB2 /* SelectCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461DBE22441F1CA001B9BB2 /* SelectCategoryController.swift */; };
@@ -35,6 +38,9 @@
 		633646C31B8C657400FF45E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		633646C51B8C657400FF45E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		633646C81B8C657400FF45E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		845C9F512454BA2700F39474 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		845C9F5324558EB800F39474 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
+		845C9F5424558EB800F39474 /* LeaderboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardTableViewCell.xib; sourceTree = "<group>"; };
 		8461DBD12438B656001B9BB2 /* StartMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuViewController.swift; sourceTree = "<group>"; };
 		8461DBDA2441EFD1001B9BB2 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		8461DBE22441F1CA001B9BB2 /* SelectCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryController.swift; sourceTree = "<group>"; };
@@ -143,6 +149,9 @@
 				8461DBE42441F5D5001B9BB2 /* LoginController.swift */,
 				8461DBEC244C6C4C001B9BB2 /* RoomViewController.swift */,
 				8485A76D244DCD3B00668264 /* EndedMultiplayerViewController.swift */,
+				845C9F512454BA2700F39474 /* LeaderboardViewController.swift */,
+				845C9F5324558EB800F39474 /* LeaderboardTableViewCell.swift */,
+				845C9F5424558EB800F39474 /* LeaderboardTableViewCell.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -211,6 +220,7 @@
 				ADEB04ED1FBDFEAA00026359 /* Main.storyboard in Resources */,
 				8461DBE724420925001B9BB2 /* GoogleService-Info.plist in Resources */,
 				633646C91B8C657400FF45E2 /* LaunchScreen.xib in Resources */,
+				845C9F5624558EB800F39474 /* LeaderboardTableViewCell.xib in Resources */,
 				633646C61B8C657400FF45E2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +309,8 @@
 				633646C11B8C657400FF45E2 /* ViewController.swift in Sources */,
 				8461DBE32441F1CA001B9BB2 /* SelectCategoryController.swift in Sources */,
 				8461DBD22438B656001B9BB2 /* StartMenuViewController.swift in Sources */,
+				845C9F522454BA2700F39474 /* LeaderboardViewController.swift in Sources */,
+				845C9F5524558EB800F39474 /* LeaderboardTableViewCell.swift in Sources */,
 				633646BF1B8C657400FF45E2 /* AppDelegate.swift in Sources */,
 				8461DBE52441F5D5001B9BB2 /* LoginController.swift in Sources */,
 			);

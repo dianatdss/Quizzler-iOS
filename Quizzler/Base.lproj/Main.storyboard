@@ -216,9 +216,13 @@
                                     <action selector="onGoBackClick:" destination="Sc4-B2-cnw" eventType="touchUpInside" id="Upj-3B-npJ"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="gxq-qz-bpk">
-                                <rect key="frame" x="67" y="308" width="240" height="128"/>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="gxq-qz-bpk">
+                                <rect key="frame" x="67" y="306" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="6BT-Ww-p5l"/>
+                                    <constraint firstAttribute="height" constant="128" id="gvj-9f-q0M"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -229,6 +233,7 @@
                             <constraint firstItem="gxq-qz-bpk" firstAttribute="top" secondItem="Kqo-xi-QdK" secondAttribute="bottom" constant="60" id="Qvx-Uo-odz"/>
                             <constraint firstItem="Kqo-xi-QdK" firstAttribute="top" secondItem="i9T-5p-eZN" secondAttribute="bottom" constant="60" id="SDo-aM-WCV"/>
                             <constraint firstItem="i9T-5p-eZN" firstAttribute="top" secondItem="j4H-Ea-7kW" secondAttribute="bottom" constant="80" id="aah-de-Q1M"/>
+                            <constraint firstItem="gxq-qz-bpk" firstAttribute="centerX" secondItem="o9r-AJ-Ujj" secondAttribute="centerX" id="l1W-vb-jAm"/>
                             <constraint firstItem="lyh-wQ-BJJ" firstAttribute="top" secondItem="hD5-EC-cbv" secondAttribute="bottom" constant="60" id="tcW-w6-3wy"/>
                         </constraints>
                     </view>
@@ -289,6 +294,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYm-ne-GbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-237.5" y="-34.5"/>
+        </scene>
+        <!--Leaderboard View Controller-->
+        <scene sceneID="uuT-T5-h36">
+            <objects>
+                <viewController id="6b8-O3-nVb" customClass="LeaderboardViewController" customModule="Quizzler" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ipZ-Aa-Qmf"/>
+                        <viewControllerLayoutGuide type="bottom" id="fwq-vO-7AH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iRY-Lz-QUD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="egx-jU-drZ">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fwq-vO-7AH" firstAttribute="top" secondItem="egx-jU-drZ" secondAttribute="bottom" id="HN3-6X-4vt"/>
+                            <constraint firstItem="egx-jU-drZ" firstAttribute="leading" secondItem="iRY-Lz-QUD" secondAttribute="leadingMargin" id="LxY-L8-sid"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="egx-jU-drZ" secondAttribute="trailing" id="b6e-si-36j"/>
+                            <constraint firstItem="egx-jU-drZ" firstAttribute="top" secondItem="ipZ-Aa-Qmf" secondAttribute="bottom" id="ryC-cr-67C"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3G8-DZ-Oq2"/>
+                    <connections>
+                        <outlet property="tableView" destination="egx-jU-drZ" id="fEa-vY-jwN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1CV-TY-zJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="1522"/>
         </scene>
         <!--Select Category Controller-->
         <scene sceneID="49b-08-wH5">
@@ -436,6 +475,16 @@
                                     <action selector="onJoinBTNClick:" destination="myk-UB-Ljg" eventType="touchUpInside" id="1ZA-JV-IKS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OG9-vC-DZZ">
+                                <rect key="frame" x="115.5" y="607.5" width="143" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="See leaderboard">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSeeLeaderboardClick:" destination="myk-UB-Ljg" eventType="touchUpInside" id="UNk-Bo-4RT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -450,6 +499,7 @@
                             <constraint firstItem="lsR-ND-xuK" firstAttribute="top" secondItem="04i-mw-W2M" secondAttribute="bottom" constant="30" id="MIw-gu-Ybb"/>
                             <constraint firstItem="lf4-dV-9Fz" firstAttribute="top" secondItem="PyD-n8-D2p" secondAttribute="bottom" constant="30" id="MQE-R3-UkF"/>
                             <constraint firstItem="2Wr-gB-7o3" firstAttribute="centerX" secondItem="D3N-cY-xN7" secondAttribute="centerX" id="SUt-FE-Hm0"/>
+                            <constraint firstItem="OG9-vC-DZZ" firstAttribute="top" secondItem="8Jk-oA-lud" secondAttribute="bottom" constant="20" id="TKo-Df-Qov"/>
                             <constraint firstItem="alE-xr-UDl" firstAttribute="centerX" secondItem="D3N-cY-xN7" secondAttribute="centerX" id="TjD-LA-i2k"/>
                             <constraint firstItem="2Wr-gB-7o3" firstAttribute="top" secondItem="cy3-8h-35g" secondAttribute="bottom" constant="15" id="U2M-23-9XH"/>
                             <constraint firstItem="cy3-8h-35g" firstAttribute="centerX" secondItem="D3N-cY-xN7" secondAttribute="centerX" id="UAq-Sg-qHd"/>
@@ -458,6 +508,7 @@
                             <constraint firstItem="alE-xr-UDl" firstAttribute="top" secondItem="2Wr-gB-7o3" secondAttribute="bottom" constant="15" id="bz8-bH-nuZ"/>
                             <constraint firstItem="8Jk-oA-lud" firstAttribute="top" secondItem="alE-xr-UDl" secondAttribute="bottom" constant="25" id="hRz-Bh-PVj"/>
                             <constraint firstItem="Drt-DF-weH" firstAttribute="centerX" secondItem="D3N-cY-xN7" secondAttribute="centerX" id="mI1-WV-VHb"/>
+                            <constraint firstItem="OG9-vC-DZZ" firstAttribute="centerX" secondItem="D3N-cY-xN7" secondAttribute="centerX" id="tWY-e0-5A9"/>
                             <constraint firstItem="lf4-dV-9Fz" firstAttribute="centerX" secondItem="D3N-cY-xN7" secondAttribute="centerX" id="uLP-Bf-bbF"/>
                             <constraint firstItem="04i-mw-W2M" firstAttribute="top" secondItem="EdQ-jm-QAZ" secondAttribute="bottom" constant="40" id="wCF-8G-hcg"/>
                             <constraint firstItem="frA-OK-TZS" firstAttribute="centerX" secondItem="D3N-cY-xN7" secondAttribute="centerX" id="wmd-ta-u2e"/>
@@ -477,6 +528,7 @@
                         <outlet property="selectCategoryLabel" destination="04i-mw-W2M" id="ayz-1s-qnF"/>
                         <segue destination="vXZ-lx-hvc" kind="push" identifier="navigateToQuiz" id="yRE-9z-5LV"/>
                         <segue destination="3BI-Cw-eZb" kind="push" identifier="navigateToCreateRoom" id="orT-4m-bSW"/>
+                        <segue destination="6b8-O3-nVb" kind="push" identifier="navigateToLeaderboard" id="LVP-9N-Zjd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubL-cC-33q" userLabel="First Responder" sceneMemberID="firstResponder"/>
