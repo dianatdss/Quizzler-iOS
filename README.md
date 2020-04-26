@@ -1,5 +1,6 @@
-School assignment
-Quizz App developed using Swift 4 & Xcode 9
+School assignment developed using Swift 4 & Xcode 9
+
+Quizz App 
 
 Features:
 - login/register
