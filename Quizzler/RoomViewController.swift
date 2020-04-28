@@ -51,9 +51,6 @@ class RoomViewController: UIViewController {
       
             }
         }
-            
-    
-    
         super.viewDidLoad()
     }
 

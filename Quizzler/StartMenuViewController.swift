@@ -73,8 +73,6 @@ class StartMenuViewController: UIViewController {
     }
     
     func nextQuestion() {
-        
-            print("Index = \(index)")
             
             if index < allQuestions.count {
                 self.updateUI()
