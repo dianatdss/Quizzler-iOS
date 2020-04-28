@@ -1,11 +1,3 @@
-//
-//  RegisterController.swift
-//  Quizzler
-//
-//  Created by Diana on 11/04/2020.
-//  Copyright © 2020 London App Brewery. All rights reserved.
-//
-
 import UIKit
 import Firebase
 

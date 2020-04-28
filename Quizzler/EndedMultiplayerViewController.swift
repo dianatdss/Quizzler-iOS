@@ -1,10 +1,3 @@
-//
-//  EndedMultiplayerViewController.swift
-//  Quizzler
-//
-//  Created by Diana on 20/04/2020.
-//
-
 import UIKit
 
 class EndedMultiplayerViewController: UIViewController {

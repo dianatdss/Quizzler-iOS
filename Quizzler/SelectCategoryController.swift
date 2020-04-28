@@ -1,10 +1,3 @@
-//
-//  SelectCategoryController.swift
-//  Quizzler
-//
-//  Created by Diana on 11/04/2020.
-//
-
 import UIKit
 import Alamofire
 import SwiftyJSON
@@ -44,7 +37,6 @@ class SelectCategoryController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +51,6 @@ class SelectCategoryController: UIViewController {
         isCreator = false
         isCreateRoomSelected = false
         isJoinARoomSelected = false
-    
     }
     
     
@@ -126,7 +117,6 @@ class SelectCategoryController: UIViewController {
         joinRoomButton.backgroundColor = UIColor.white
         joinRoomButton.setTitleColor(defaultColor, for: .normal)
        
-     //   roomCodeInput.isHidden = true
         selectCategoryLabel.isHidden = false
         roomCodeInput.isHidden = true
         joinBTN.isHidden = true
@@ -150,7 +140,6 @@ class SelectCategoryController: UIViewController {
             joinRoomButton.backgroundColor = UIColor.white
             joinRoomButton.setTitleColor(defaultColor, for: .normal)
         }
-     //   roomCodeInput.isHidden = !roomCodeInput.isHidden
         selectCategoryLabel.isHidden = !selectCategoryLabel.isHidden
         roomCodeInput.isHidden = !roomCodeInput.isHidden
         joinBTN.isHidden = !joinBTN.isHidden

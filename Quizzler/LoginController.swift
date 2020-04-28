@@ -1,10 +1,3 @@
-//
-//  LoginController.swift
-//  Quizzler
-//
-//  Created by Diana on 11/04/2020.
-//
-
 import UIKit
 import Firebase
 class LoginController: UIViewController {

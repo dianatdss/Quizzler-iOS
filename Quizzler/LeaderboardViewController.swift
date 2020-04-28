@@ -1,11 +1,3 @@
-//
-//  LeaderboardViewController.swift
-//  Quizzler
-//
-//  Created by Diana on 25/04/2020.
-//  Copyright © 2020 London App Brewery. All rights reserved.
-//
-
 import UIKit
 
 class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -43,14 +35,5 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return leaderBoard.count
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

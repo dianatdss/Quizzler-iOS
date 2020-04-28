@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Quizzler
-//
-//  Created by Diana on 30/03/2020.
-//
-
 import UIKit
 import Alamofire
 import SwiftyJSON
