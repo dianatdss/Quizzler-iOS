@@ -1,10 +1,3 @@
-//
-//  RoomViewController.swift
-//  Quizzler
-//
-//  Created by Diana on 19/04/2020.
-//
-
 import UIKit
 import Firebase
 import SwiftyJSON
@@ -62,9 +55,6 @@ class RoomViewController: UIViewController {
     
     
         super.viewDidLoad()
-        
-        //de facut listener pe state, cand e 1 pornim jocul
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,15 +93,5 @@ class RoomViewController: UIViewController {
             destinationVC.isMultiplayer = true
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

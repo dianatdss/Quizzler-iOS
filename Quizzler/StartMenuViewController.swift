@@ -1,10 +1,3 @@
-//
-//  StartMenuViewController.swift
-//  Quizzler
-//
-//  Created by Diana on 04/04/2020.
-//
-
 import UIKit
 import Firebase
 
@@ -56,17 +49,20 @@ class StartMenuViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "multiplayerEnded" {
             
-            let docData1 : [String: Any] = [
-                "player": leaderBoard[0].player!,
-                "score": leaderBoard[0].score!
-            ]
-            let docData2 : [String: Any] = [
-                "player": leaderBoard[1].player!,
-                "score": leaderBoard[1].score!
+            if self.isCreator == true {
+                let docData1 : [String: Any] = [
+                    "player": leaderBoard[0].player!,
+                    "score": leaderBoard[0].score!
                 ]
+                let docData2 : [String: Any] = [
+                    "player": leaderBoard[1].player!,
+                    "score": leaderBoard[1].score!
+                    ]
+                
+                db!.collection("leaderboard").addDocument(data: docData1)
+                db!.collection("leaderboard").addDocument(data: docData2)
+            }
             
-            db!.collection("leaderboard").addDocument(data: docData1)
-            db!.collection("leaderboard").addDocument(data: docData2)
             let destinationVC = segue.destination as! EndedMultiplayerViewController
             destinationVC.winner = self.winner
         }

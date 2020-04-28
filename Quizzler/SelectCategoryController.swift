@@ -1,10 +1,3 @@
-//
-//  SelectCategoryController.swift
-//  Quizzler
-//
-//  Created by Diana on 11/04/2020.
-//
-
 import UIKit
 import Alamofire
 import SwiftyJSON
